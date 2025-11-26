@@ -255,22 +255,22 @@ void setup() {
     //set as inputs
     DDRD &= ~(1<<LEFT_ENC_PIN_A);
     DDRD &= ~(1<<LEFT_ENC_PIN_B);
-    DDRC &= ~(1<<RIGHT_ENC_PIN_A);
-    DDRC &= ~(1<<RIGHT_ENC_PIN_B);
+    DDRD &= ~(1<<3);  // pin 18 = PD3
+    DDRD &= ~(1<<2);  // pin 19 = PD2
     
     //enable pull up resistors
     PORTD |= (1<<LEFT_ENC_PIN_A);
     PORTD |= (1<<LEFT_ENC_PIN_B);
-    PORTC |= (1<<RIGHT_ENC_PIN_A);
-    PORTC |= (1<<RIGHT_ENC_PIN_B);
+    PORTD |= (1<<3);  // pin 18 = PD3
+    PORTD |= (1<<2);  // pin 19 = PD2
     
     // tell pin change mask to listen to left encoder pins
     PCMSK2 |= (1 << LEFT_ENC_PIN_A)|(1 << LEFT_ENC_PIN_B);
-    // tell pin change mask to listen to right encoder pins
-    PCMSK1 |= (1 << RIGHT_ENC_PIN_A)|(1 << RIGHT_ENC_PIN_B);
+    // tell pin change mask to listen to right encoder pins (pins 18/19 = PD3/PD2)
+    PCMSK0 |= (1 << 3)|(1 << 2);
     
-    // enable PCINT1 and PCINT2 interrupt in the general interrupt mask
-    PCICR |= (1 << PCIE1) | (1 << PCIE2);
+    // enable PCINT0 and PCINT2 interrupt in the general interrupt mask
+    PCICR |= (1 << PCIE0) | (1 << PCIE2);
   #endif
   initMotorController();
   resetPID();

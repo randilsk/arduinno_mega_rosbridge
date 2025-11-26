@@ -9,9 +9,9 @@
   #define LEFT_ENC_PIN_A 2  //pin 2
   #define LEFT_ENC_PIN_B 3  //pin 3
   
-  //below can be changed, but should be PORTC pins
-  #define RIGHT_ENC_PIN_A 18  //pin A4
-  #define RIGHT_ENC_PIN_B 19  //pin A5
+  //below can be changed, but should be PORTD pins on Mega 2560
+  #define RIGHT_ENC_PIN_A 18  //pin 18 (PD3)
+  #define RIGHT_ENC_PIN_B 19  //pin 19 (PD2)
 #endif
    
 long readEncoder(int i);
